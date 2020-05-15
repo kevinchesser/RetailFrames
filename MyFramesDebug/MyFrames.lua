@@ -18,16 +18,26 @@ function RetailFrames_InitialConfig(frame)
 	frame.powerBar:SetFrameLevel(2)
 end
 
-function RetailFrames_OnLoad()
+function RetailFrames_OnLoad(self)
+	self:RegisterEvent("UNIT_HEALTH")
+	self:RegisterEvent("UNIT_MAXHEALTH")
+	self:RegisterEvent("UNIT_MANA")
+	self:RegisterEvent("UNIT_ENERGY")
+	self:RegisterEvent("UNIT_RAGE")
+	self:RegisterEvent("UNIT_MAXMANA")
+	self:RegisterEvent("UNIT_DISPLAYPOWER")
+	self:RegisterEvent("PLAYER_ENTERING_WORLD")
+
+	self.name = self:GetName() and _G[self:GetName() .. "_Unit_Name"]
+	self.powerBar = self:GetName() and _G[self:GetName() .. "_Unit_PowerBar"]
+	self.healthBar = self:GetName() and _G[self:GetName() .. "_Unit_HealthBar"]
+
 	RetailFrames_Header.initialConfigFunction = RetailFrames_InitialConfig
 	RetailFrames_Header:Show()
 end
 
 function RetailFrames_OnShow(button)
 	local unit = button:GetAttribute("unit")
-	button.name = button:GetName() and _G[button:GetName() .. "_Unit_Name"]
-	button.powerBar = button:GetName() and _G[button:GetName() .. "_Unit_PowerBar"]
-	button.healthBar = button:GetName() and _G[button:GetName() .. "_Unit_HealthBar"]
 
 	if unit then
 		local guid = UnitGUID(unit)
@@ -41,10 +51,6 @@ end
 function RetailFrames_OnEvent(self, event, arg1, ...)
 	local button = self
 	local unit = button:GetAttribute("unit")
-
-	button.name = button:GetName() and _G[button:GetName() .. "_Unit_Name"]
-	button.powerBar = button:GetName() and _G[button:GetName() .. "_Unit_PowerBar"]
-	button.healthBar = button:GetName() and _G[button:GetName() .. "_Unit_HealthBar"]
 
 	if not unit then
 		return
