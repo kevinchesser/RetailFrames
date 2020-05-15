@@ -1,0 +1,5 @@
+## Title: MyFramesDebug
+## Interface: 20400
+
+MyFrames.xml
+MyFrames.lua
