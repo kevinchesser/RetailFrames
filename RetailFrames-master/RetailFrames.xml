@@ -18,17 +18,27 @@
  			<Offset x="1" y="-1"/>
  		</Shadow>
  	</Font>
-	<Font name="DurationFont" font="Fonts\FRIZQT__.TTF" virtual="true" outline="NORMAL">
+	<Font name="DurationFont" font="Fonts\ARIALN.TTF" virtual="true" outline="NORMAL">
 		<FontHeight>
- 			<AbsValue val="12"/>
+ 			<AbsValue val="13"/>
  		</FontHeight>
- 		<Color r="1.0" g="1.0" b="0.0"/>
+ 		<Color r="1.0" g="1.0" b="1.0"/>
 	</Font>
 	<Font name="StacksFont" font="Fonts\ARIALN.TTF" virtual="true" outline="NORMAL">
 		<FontHeight>
- 			<AbsValue val="12"/>
+ 			<AbsValue val="13"/>
  		</FontHeight>
 	</Font>
+	<Frame name="RetailFrames_Loader">
+		<Scripts>
+			<OnLoad>
+				self:RegisterEvent("ADDON_LOADED")
+			</OnLoad>
+			<OnEvent>
+				RetailFrames_Loader(self, event, ...)
+			</OnEvent>
+		</Scripts>
+	</Frame>
 	<Frame name="RetailFrames_Template" virtual="true"> <!-- The frame containing our units. -->
 		<Size x="130" y="80"/>
 		<Frames>
@@ -177,6 +187,9 @@
 			<OnLoad>
 				RetailFrames_OnLoad(self)
 			</OnLoad>
+			<OnUpdate>
+				RetailFrames_OnUpdate(self, elapsed)
+			</OnUpdate>
 		</Scripts>
 	</Frame>
 
@@ -189,7 +202,7 @@
 			<Attribute name="showParty" type="boolean" value="true"/>
 			<Attribute name="showRaid" type="boolean" value="true"/>
 			<Attribute name="showPlayer" type="boolean" value="true"/>
-			<Attribute name="showSolo" type="boolean" value="false"/>
+			<Attribute name="showSolo" type="boolean" value="true"/>
 			<Attribute name="showParty" type="boolean" value="true"/>
 			<Attribute name="maxColumns" type="number" value="8"/>
 			<Attribute name="unitsPerColumn" type="number" value="5"/>
@@ -199,16 +212,6 @@
 			<Attribute name="templateType" type="string" value="Frame"/>
 			<Attribute name="sortMethod" type="string" value="NAMELIST"/>
 		</Attributes>
-	</Frame>
-	<Frame name="RetailFrames_Loader">
-		<Scripts>
-			<OnLoad>
-				self:RegisterEvent("VARIABLES_LOADED")
-			</OnLoad>
-			<OnEvent>
-				RetailFrames_Loader(self, event, ...)
-			</OnEvent>
-		</Scripts>
 	</Frame>
 	<Frame name="RetailAuraButtonTemplate" virtual="true" hidden="true">
 		<Size x="20" y="20"/>
