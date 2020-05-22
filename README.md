@@ -9,8 +9,6 @@ For questions, suggestions and bug reports message me on Discord via siggestardu
 
 Download **one** of the folders above and change the name to 'RetailFrames' before moving it to your AddOns folder. 
 
-Start WoW and enjoy!
-
 ![Screen shot](https://image.prntscr.com/image/mNEcMrFXQXOEBV5h0FhE8A.png)
 
 ## Commands
