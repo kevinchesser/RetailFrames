@@ -189,7 +189,7 @@
 			<Attribute name="showParty" type="boolean" value="true"/>
 			<Attribute name="showRaid" type="boolean" value="true"/>
 			<Attribute name="showPlayer" type="boolean" value="true"/>
-			<Attribute name="showSolo" type="boolean" value="true"/>
+			<Attribute name="showSolo" type="boolean" value="false"/>
 			<Attribute name="showParty" type="boolean" value="true"/>
 			<Attribute name="maxColumns" type="number" value="8"/>
 			<Attribute name="unitsPerColumn" type="number" value="5"/>
