@@ -18,7 +18,7 @@
  			<Offset x="1" y="-1"/>
  		</Shadow>
  	</Font>
-	<Font name="DurationFont" font="Fonts\ARIALN.TTF" virtual="true" outline="NORMAL">
+	<Font name="DurationFont" font="Fonts\FRIZQT__.TTF" virtual="true" outline="NORMAL">
 		<FontHeight>
  			<AbsValue val="13"/>
  		</FontHeight>
@@ -150,7 +150,7 @@
 						<Size x="20" y="20"/>
 						<Anchors>
 							<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
-								<Offset x="0" y="8"/>
+								<Offset x="-2" y="12"/>
 							</Anchor>
 						</Anchors>
 					</Frame>
