@@ -106,7 +106,8 @@ function RetailFrames_OnLoad(self)
 	self.healthBar = self:GetName() and _G[self:GetName() .. "_Unit_HealthBar"]
 	self.selected = self:GetName() and _G[self:GetName() .. "_Unit_Selected"]
 	self.outOfRange = self:GetName() and _G[self:GetName() .. "_Unit_OutOfRange"]
-	self.SizeSet = false --debug
+	self.SizeSet = false
+	self.TimeElapsedSinceLastUpdate = 0
 end
 
 function RetailFrames_OnShow(self)
@@ -158,6 +159,22 @@ function RetailFrames_OnEvent(self, event, arg1, ...)
 	end
 end
 
+function RetailFrames_OnUpdate(self, elapsed)
+	self.TimeElapsedSinceLastUpdate = self.TimeElapsedSinceLastUpdate + elapsed
+	if self.TimeElapsedSinceLastUpdate > UPDATE_INTERVAL then
+		---------------------------------------------------
+
+		if UnitInRange(self:GetAttribute("unit")) then
+			self.outOfRange:Hide()
+		else
+			self.outOfRange:Show()
+		end
+
+		---------------------------------------------------
+		self.TimeElapsedSinceLastUpdate = 0
+	end
+end
+
 -------------------------------------------------------------------------------------------------------------------
 
 function RetailFrames_ResetUnitButton(self, unit)
@@ -172,12 +189,6 @@ function RetailFrames_ResetName(self, unit)
 end
 
 function RetailFrames_UpdateHealthBar(self, unit)
-	
-	if UnitInRange(unit) then
-		self.outOfRange:Hide()
-	else
-		self.outOfRange:Show()
-	end
 	
 	if UnitIsDeadOrGhost(unit) then
 		self.healthBar:SetValue(0)
@@ -290,8 +301,8 @@ function RetailAuras_UpdateHelpful(self)
 
 	self.BUFFS_PRESENT = 0
 	for i=1, MAX_BUFFS do
-		if UnitBuff(self.unit, i) then
-			name, rank, icon, stacks = UnitBuff(self.unit, i)
+		if UnitBuff(self.unit, i, true) then
+			name, rank, icon, stacks = UnitBuff(self.unit, i, true)
 
 			_G[self.Buffs[i]:GetName() .. "_Icon"]:SetTexture(icon)
 
@@ -317,7 +328,7 @@ end
 function RetailAuras_UpdateHelpfulDuration(self, i)
 	local duration, expirationTime
 
-	duration, expirationTime = select(5, UnitBuff(self.unit, i))	
+	duration, expirationTime = select(5, UnitBuff(self.unit, i, true))	
 
 	if not expirationTime or expirationTime >= 30 then
 		_G[self.Buffs[i]:GetName() .. "_Duration"]:SetText("")
