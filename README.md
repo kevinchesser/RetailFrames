@@ -5,9 +5,15 @@ Whenever (if) Classic WoW: TBC gets released I will no longer be supporting this
 
 For questions, suggestions and bug reports message me on Discord via siggestardust#8016.
 
+## Installation
+
+Download ONE of the folders above and change the name to `RetailFrames` before moving it to your AddOns folder. 
+
+Start WoW and enjoy!
+
 ![Screen shot](https://image.prntscr.com/image/mNEcMrFXQXOEBV5h0FhE8A.png)
 
-## Commands:
+## Commands
 
 The syntax looks like `/rf <attribute> value`. Reload your UI for changes to take effect.
 
