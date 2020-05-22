@@ -24,5 +24,4 @@ The syntax looks like `/rf <attribute> value`. Reload your UI for changes to tak
 **Y-offset from left center:** `y`
 
 ## To add: 
-- Buff filtering.
 - Adjustable buff caps.
