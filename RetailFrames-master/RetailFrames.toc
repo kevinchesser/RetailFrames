@@ -1,0 +1,10 @@
+## Title: |cFFFF0000Retail|cFFFFFFFFFrames
+## Notes: Emulates the default raiding frames in retail. Please bugreport to siggestardust#8016.
+## Author: Siggelicious
+## Interface: 20400
+## SavedVariables: RetailFrames_Options
+
+RetailFrames.xml
+RetailFramesPet.xml
+RetailFrames.lua
+RetailFramesPet.lua
