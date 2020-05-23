@@ -172,7 +172,7 @@
 						RetailAuras_OnEvent(self, event, ...)
 					</OnEvent>
 					<OnUpdate>
-						<!--RetailAuras_OnUpdate(self, elapsed)-->
+						RetailAuras_OnUpdate(self, elapsed)
 					</OnUpdate>
 					<OnShow>
 						RetailAuras_OnShow(self)
@@ -216,7 +216,7 @@
 			<Attribute name="sortMethod" type="string" value="NAMELIST"/>
 		</Attributes>
 	</Frame>
-	<Cooldown name="RetailAuraButtonTemplate" virtual="true" hidden="true">
+	<Frame name="RetailAuraButtonTemplate" virtual="true" hidden="true">
 		<Size x="20" y="20"/>
 		<Anchors>
 			<Anchor point="RIGHT" relativePoint="LEFT">
@@ -252,5 +252,5 @@
 				</FontString>
 			</Layer>
 		</Layers>
-	</Cooldown>
+	</Frame>
 </Ui>

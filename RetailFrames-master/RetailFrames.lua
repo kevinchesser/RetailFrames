@@ -371,10 +371,10 @@ function RetailAuras_OnLoad(self)
 	self.SizeSet = false
 
 	for i=1, MAX_BUFFS do
-		self.Buffs[i] = CreateFrame("Cooldown", self:GetName().."Buff"..i, self.Buffs[i-1], "RetailAuraButtonTemplate")
+		self.Buffs[i] = CreateFrame("Frame", self:GetName().."Buff"..i, self.Buffs[i-1], "RetailAuraButtonTemplate")
 		_G[self.Buffs[i]:GetName() .. "_Border"]:SetVertexColor(0.0, 0.0, 0.0)
 
-		self.Debuffs[i] = CreateFrame("Cooldown", self:GetName().."Debuff"..i, self.Debuffs[i-1], "RetailAuraButtonTemplate")
+		self.Debuffs[i] = CreateFrame("Frame", self:GetName().."Debuff"..i, self.Debuffs[i-1], "RetailAuraButtonTemplate")
 	end
 end
 
@@ -414,20 +414,14 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 function RetailAuras_UpdateHelpful(self)
-	local name, rank, icon, stacks
-	local duration, fullDuration, startTime
+	local name, rank, icon, stacks, duration
 
 	self.BUFFS_PRESENT = 0
 	for i=1, MAX_BUFFS do
 		if UnitBuff(self.unit, i, true) then
 			name, rank, icon, stacks = UnitBuff(self.unit, i, true)
-			fullDuration, duration = select(5, UnitBuff(self.unit, i, true))
 
-			
 			_G[self.Buffs[i]:GetName() .. "_Icon"]:SetTexture(icon)
-
-			startTime = GetTime() - (fullDuration - duration)
-			CooldownFrame_SetTimer(self.Buffs[i], startTime, fullDuration, 1)
 
 			if stacks > 1 then
 				_G[self.Buffs[i]:GetName() .. "_Stacks"]:SetText(stacks)
@@ -468,7 +462,6 @@ function RetailAuras_UpdateHarmful(self)
 			name, rank, icon, stacks, debuffType = UnitDebuff(self.unit, i, true)
 
 			_G[self.Debuffs[i]:GetName() .. "_Icon"]:SetTexture(icon)
-
 
 			if debuffType == "Magic" then
 				_G[self.Debuffs[i]:GetName() .. "_Border"]:SetVertexColor(0.2, 0.6, 1.0)
