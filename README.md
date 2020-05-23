@@ -9,7 +9,7 @@ For questions, suggestions and bug reports message me on Discord via siggestardu
 
 Download **one** of the folders above and change the name to 'RetailFrames' before moving it to your AddOns folder. 
 
-![Screen shot](https://image.prntscr.com/image/mNEcMrFXQXOEBV5h0FhE8A.png)
+![Screen shot](https://image.prntscr.com/image/AK4UvUo5TB_Et0ZCjaEGHA.png)
 
 ## Commands
 
