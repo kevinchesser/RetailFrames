@@ -372,7 +372,7 @@ function RetailAuras_OnLoad(self)
 
 	for i=1, MAX_BUFFS do
 		self.Buffs[i] = CreateFrame("Frame", self:GetName().."Buff"..i, self.Buffs[i-1], "RetailAuraButtonTemplate")
-		_G[self.Buffs[i]:GetName() .. "_Border"]:SetVertexColor(0.0, 0.0, 0.0)
+		_G[self.Buffs[i]:GetName() .. "_Border"]:SetVertexColor(1.0, 1.0, 1.0)
 
 		self.Debuffs[i] = CreateFrame("Frame", self:GetName().."Debuff"..i, self.Debuffs[i-1], "RetailAuraButtonTemplate")
 	end
