@@ -1,11 +1,11 @@
 local function print(msg) DEFAULT_CHAT_FRAME:AddMessage(msg) end
 
 local UPDATE_INTERVAL = 0.25
-local MAX_BUFFS = 6
+local MAX_BUFFS = 8
 
 local LOADED = false
 
-local AURA_SIZE = 20
+local AURA_SIZE = 12
 
 -------------------------------------------------------------------------------------------------------------------
 
@@ -372,7 +372,7 @@ function RetailAuras_OnLoad(self)
 
 	for i=1, MAX_BUFFS do
 		self.Buffs[i] = CreateFrame("Frame", self:GetName().."Buff"..i, self.Buffs[i-1], "RetailAuraButtonTemplate")
-		_G[self.Buffs[i]:GetName() .. "_Border"]:SetVertexColor(1.0, 1.0, 1.0)
+		_G[self.Buffs[i]:GetName() .. "_Border"]:SetVertexColor(0, 0, 0, 0)
 
 		self.Debuffs[i] = CreateFrame("Frame", self:GetName().."Debuff"..i, self.Debuffs[i-1], "RetailAuraButtonTemplate")
 	end
@@ -397,7 +397,11 @@ function RetailAuras_OnUpdate(self, elapsed)
 		for i=1, self.BUFFS_PRESENT do
 			RetailAuras_UpdateHelpfulDuration(self, i)
 		end
- 
+
+		for i=1, self.DEBUFFS_PRESENT do
+			RetailAuras_UpdateHarmfulDuration(self, i)
+		end
+
 	 	-----------------------------------
 	 	self.TimeElapsedSinceLastUpdate = 0
 	 end
@@ -425,11 +429,10 @@ function RetailAuras_UpdateHelpful(self)
 
 			if stacks > 1 then
 				_G[self.Buffs[i]:GetName() .. "_Stacks"]:SetText(stacks)
+				_G[self.Debuffs[i]:GetName() .. "_Duration"]:SetFont("Fonts\\FRIZQT__.TTF", 8, "OUTLINE")
 			else 
 				_G[self.Buffs[i]:GetName() .. "_Stacks"]:SetText("")
 			end
-
-			--RetaiulAuras_UpdateHelpfulDuration(self, i)
 
 			self.Buffs[i]:Show()
 			self.BUFFS_PRESENT = self.BUFFS_PRESENT + 1
@@ -451,6 +454,7 @@ function RetailAuras_UpdateHelpfulDuration(self, i)
 		_G[self.Buffs[i]:GetName() .. "_Duration"]:SetText("")
 	else 
 		_G[self.Buffs[i]:GetName() .. "_Duration"]:SetText(floor(expirationTime))
+		_G[self.Buffs[i]:GetName() .. "_Duration"]:SetFont("Fonts\\FRIZQT__.TTF", 8, "OUTLINE")
 	end
 end
 
@@ -477,6 +481,7 @@ function RetailAuras_UpdateHarmful(self)
 
 			if stacks > 1 then
 				_G[self.Debuffs[i]:GetName() .. "_Stacks"]:SetText(stacks)
+				_G[self.Debuffs[i]:GetName() .. "_Duration"]:SetFont("Fonts\\FRIZQT__.TTF", 8, "OUTLINE")
 			else 
 				_G[self.Debuffs[i]:GetName() .. "_Stacks"]:SetText("")
 			end
@@ -503,6 +508,7 @@ function RetailAuras_UpdateHarmfulDuration(self, i)
 		_G[self.Debuffs[i]:GetName() .. "_Duration"]:SetText("")
 	else 
 		_G[self.Debuffs[i]:GetName() .. "_Duration"]:SetText(floor(expirationTime))
+		_G[self.Debuffs[i]:GetName() .. "_Duration"]:SetFont("Fonts\\FRIZQT__.TTF", 8, "OUTLINE")
 	end
 end
 
